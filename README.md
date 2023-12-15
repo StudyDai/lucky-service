@@ -67,7 +67,7 @@ method：==get==
 
 携带请求头：有
 
-```json
+```js
 headers: {
   authorization: 'Bearer xxxx'
 }
@@ -151,7 +151,7 @@ data: {
 
 携带请求头：有
 
-```json
+```js
 headers: {
   authorization: 'Bearer xxxx'
 }
