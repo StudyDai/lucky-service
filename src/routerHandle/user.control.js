@@ -53,13 +53,14 @@ class UserController {
      * @param {object} ctx 提供的实例
      */
     getUserInfo(ctx) {
-        const { username, gender, birthday, address, phone } = ctx.user
+        const { username, gender, birthday, address, phone, user_avatar } = ctx.user
         let data = {
             username,
             gender,
             birthday,
             address,
-            phone
+            phone,
+            user_avatar
         }
         ctx.body = {
             code: 200,
@@ -85,6 +86,10 @@ class UserController {
             }
         }
     }
+    /**
+     * 更新用户个人手机号码
+     * @param {object} ctx 提供的实例
+     */
     async updatePhone(ctx) {
         const result = await loginService.updatePhone(ctx)
         if (result) {

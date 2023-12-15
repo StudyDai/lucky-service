@@ -10,7 +10,7 @@ const { verifyToken } = require('../middleware/user.middleware')
 // 为用户提供数据 测试
 userRouter.get('/', userController.create)
 // 发送验证码
-userRouter.get('/getcode', verifyLogin, userController.getcode)
+userRouter.post('/getcode', verifyLogin, userController.getcode)
 // 登录
 userRouter.post('/login', verifyLogin, userController.login)
 // 获取用户信息
