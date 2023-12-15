@@ -3,11 +3,11 @@
 
 baseUrl：http://81.71.147.9
 
-请求方式：baseUrl +==接口前缀: '/user'==+路径
+请求方式：baseUrl +接口前缀: '/user'+路径
 
 ## 1.1 用户获取验证码
 
-method： ==get==
+method： get
 
 权限： 无
 
@@ -32,7 +32,7 @@ method： ==get==
 
 ## 1.2 用户登录,获取token
 
-method： ==post==
+method： post
 
 权限：无
 
@@ -59,7 +59,7 @@ method： ==post==
 
 ## 1.3 获取用户的个人信息
 
-method：==get==
+method：get
 
 权限：有
 
@@ -97,7 +97,7 @@ headers: {
 
 ## 1.4 更新用户的个人信息
 
-method：==post==
+method：post
 
 权限：有
 
@@ -137,7 +137,7 @@ headers: {
 
 ## 1.5 更改用户的手机号
 
-method：==post==
+method：post
 
 权限：有
 
