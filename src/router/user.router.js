@@ -6,8 +6,18 @@ const userRouter = new koaRouter({ prefix: '/user' })
 const userController = require('../routerHandle/user.control')
 // 导入中间件
 const { verifyLogin } = require('../middleware/login.middleware')
+const { verifyToken } = require('../middleware/user.middleware')
 // 为用户提供数据 测试
 userRouter.get('/', userController.create)
-userRouter.get('/login', verifyLogin, userController.login)
+// 发送验证码
+userRouter.get('/getcode', verifyLogin, userController.getcode)
+// 登录
+userRouter.post('/login', verifyLogin, userController.login)
+// 获取用户信息
+userRouter.get('/userInfo', verifyToken, userController.getUserInfo)
+// 更新用户信息
+userRouter.post('/updateInfo', verifyToken, userController.updateInfo)
+// 更改用户的手机号
+userRouter.post('/updatePhone', verifyToken, userController.updatePhone)
 
 module.exports = userRouter

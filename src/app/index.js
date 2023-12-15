@@ -15,13 +15,17 @@ app.on("error", (error, ctx) => {
     let code = 0
     let message = ''
     switch (error) {
-        case "没有传递手机号给我":
+        case PHONE_IS_NONE:
             code = 201
             message = "没有传递手机号给我"
             break;
-        case "手机号的格式不正确":
+        case PHONE_IS_NO_VERIFY:
             code = 201
             message = "手机号的格式不正确"
+            break;
+        case TOKEN_IS_LOSS:
+            code = 201
+            message = "token已失效,请重新登录"
             break;
         default:
             code = 999
@@ -35,6 +39,7 @@ app.on("error", (error, ctx) => {
 // 引入路由
 // const userRouter = require('../router/user.router')
 const registerRouter = require('../router')
+const { PHONE_IS_NONE, PHONE_IS_NO_VERIFY, TOKEN_IS_LOSS } = require('../config/error')
 // 解析xxx-formData数据
 app.use(bodyParser())
 app.use(async (ctx, next) => {
