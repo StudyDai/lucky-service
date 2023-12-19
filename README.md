@@ -11,7 +11,13 @@ method： get
 
 权限： 无
 
-携带参数：无
+携带参数：有
+
+```js
+data: {
+  'phone': string
+}
+```
 
 请求路径：
 
@@ -36,7 +42,13 @@ method： post
 
 权限：无
 
-携带参数：无
+携带参数：有
+
+```js
+data: {
+  'phone': string
+}
+```
 
 携带请求头：无
 
@@ -95,6 +107,8 @@ headers: {
 }
 ```
 
+
+
 ## 1.4 更新用户的个人信息
 
 method：post
@@ -135,6 +149,8 @@ headers: {
 }
 ```
 
+
+
 ## 1.5 更改用户的手机号
 
 method：post
@@ -145,7 +161,7 @@ method：post
 
 ```js
 data: {
-  'phone': string
+  'phone': string // 登录手机号
 }
 ```
 
@@ -172,5 +188,128 @@ headers: {
 }
 ```
 
+# 2. 商品页
 
+baseUrl：http://81.71.147.9
+
+请求方式：baseUrl +接口前缀: '/good'+路径
+
+## 2.1 获取所有的展示商品
+
+method：get
+
+权限：无
+
+携带参数：无
+
+携带请求头：无
+
+请求路径：
+
+```
+/goodlist
+```
+
+响应结果
+
+```json
+{
+   "code": 200,
+	"msg": "请求成功",
+	"data": [
+		{
+			"good_type": "人气Top",
+			"goodLists": [
+				{
+					"goodId": 1,
+					"good_name": "酱香拿铁",
+					"good_spec": "{\"cap\": \"酱香专属\",\"temperature\": [\"冰\",\"热\"],\"sugar\":[\"不另外加糖\",\"半塘\",\"标准糖\"],\"cream\":[\"默认奶油\",\"无奶油\"]}",
+					"old_price": 199,
+					"good_image": "http://81.71.147.9:8080/default_img.jpg",
+					"good_details": "主要的原料就是浓缩咖啡/白酒风味厚奶以及纯牛奶",
+					"current_price": 9.899999618530273
+				}
+			]
+		}
+	]
+}
+```
+
+## 2.2 调起支付页面
+
+method：get
+
+权限：有
+
+携带参数：有
+
+```js
+data: {
+  'order': string, // 订单号
+  'totalAmount': string //价格
+  'subject': string // 商品名称
+}
+```
+
+携带请求头：有
+
+```js
+headers: {
+  authorization: 'Bearer xxxx'
+}
+```
+
+请求路径：
+
+```
+/pay/menu
+```
+
+响应结果:
+
+```json
+{
+  "code": 200,
+   "url": "https://openapi-sandbox.dl.alipaydev.com/gateway.do?....." 
+}
+```
+
+
+
+## 2.3 查询支付状态
+
+method：post
+
+权限：有
+
+携带参数：有
+
+```js
+data {
+ 'orderId': string // 订单号
+}
+```
+
+携带请求头：有
+
+```js
+headers: {
+  authorization: 'Bearer xxxx'
+}
+```
+
+请求路径：
+
+```
+/pay/result
+```
+
+响应结果:
+
+```json
+{
+  "code": 200,
+   "msg": "支付成功/支付失败"
+}
+```
 
