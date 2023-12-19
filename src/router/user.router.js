@@ -18,6 +18,6 @@ userRouter.get('/userInfo', verifyToken, userController.getUserInfo)
 // 更新用户信息
 userRouter.post('/updateInfo', verifyToken, userController.updateInfo)
 // 更改用户的手机号
-userRouter.post('/updatePhone', verifyToken, userController.updatePhone)
+userRouter.post('/updatePhone', verifyToken, userController.updatephone)
 
 module.exports = userRouter
