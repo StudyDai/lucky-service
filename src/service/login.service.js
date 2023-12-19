@@ -55,7 +55,7 @@ class loginService {
             console.log(err);
         }
     }
-    async updatephone(ctx) {
+    async updatePhone(ctx) {
         let info = ctx.request.body
         let userInfo = ctx.user
         try {
